@@ -1,6 +1,7 @@
 // Script.js
 
 window.addEventListener('DOMContentLoaded', () => {
+  
   if (!window.localStorage.getItem('products')) {
 
     let temp = JSON.parse(myStorage.getItem('products'));
@@ -9,10 +10,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
         let product_item = document.createElement('product-item');
 
-        product_item.querySelector('img').src = temp[i].image;
-        product_item.querySelector('img').alt = temp[i].title;
-        product_item.querySelector('.title').textContent = temp[i].title;
-        product_item.querySelector('.price').textContent = temp[i].price;
+        const shadow = product_item.shadowRoot;
+
+        shadow.querySelector('img').src = temp[i].image;
+        shadow.querySelector('img').alt = temp[i].title;
+        shadow.querySelector('.title').textContent = temp[i].title;
+        shadow.querySelector('.price').textContent = temp[i].price;
         
 
         /*
@@ -40,13 +43,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
         let product_item = document.createElement('product-item');
 
-        console.log(product_item.querySelector('li').querySelector('img'));
+        const shadow = product_item.shadowRoot;
 
-        product_item.querySelector('img').src = temp[i].image;
-        product_item.querySelector('img').alt = temp[i].title;
-        product_item.querySelector('.title').textContent = temp[i].title;
-        product_item.querySelector('.price').textContent = temp[i].price;
-        
+        shadow.querySelector('img').src = temp[i].image;
+        shadow.querySelector('img').alt = temp[i].title;
+        shadow.querySelector('.title').textContent = temp[i].title;
+        shadow.querySelector('.price').textContent = temp[i].price;
+
         document.getElementById('product-list').appendChild(product_item);
       }
     });
